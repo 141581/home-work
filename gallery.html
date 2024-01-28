@@ -5,7 +5,7 @@
 div.gallery {
     margin: 5px;
   border: 1px ;
-  float: center;
+  float: left;
   width: 180px;
   
   
@@ -25,15 +25,21 @@ div.desc {
   text-align: center;
 }
 
-
+section{
+  height: 300px;
+    width: calc(100%/4);
+    border: 3px ;
+    float: left;
+    box-sizing: border-box;
+}
 
 </style>
 </head>
 <body>
     
     <h1 style="text-align:center">Gallery</h1>
-
-
+    <h2>подключаем ГИТ</h2>
+<section>
     <div class="Gallery">
         <h3>озеро в лесу</h3>
   <a target="_blank" href="./images/1.jpg">
@@ -41,8 +47,8 @@ div.desc {
   </a>
   <div class="desc">кристально чистая вода </div>
 </div>
-
-
+</section>
+<section>
     <div class="imageDiv">
         <h3>гора</h3>
   <a target="_blank" href="./images/2.jpg">
@@ -50,8 +56,8 @@ div.desc {
   </a>
   <div class="desc">зеркальное отражение </div>
 </div>
-
-
+</section>
+<section>
     <div class="imageDiv">
         <h3>пляж</h3>
   <a target="_blank" href="./images/3.jpg">
@@ -59,8 +65,8 @@ div.desc {
   </a>
   <div class="desc">ракушка в океане </div>
 </div>
-
-
+</section>
+<section>
     <div class="imageDiv">
         <h3> зима</h3>
   <a target="_blank" href="./images/4.jpg">
@@ -68,6 +74,6 @@ div.desc {
   </a>
   <div class="desc">белый фон </div>
 </div>
-
+</section>
 </body>
 </html>
