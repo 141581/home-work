@@ -1,0 +1,111 @@
+body{
+   margin: 0px;
+  /* background-image: linear-gradient(30deg, #d1ff02,#ffff00 ,#ff6e02);
+   background-image: linear-gradient(30deg, #0a4ba0,#ffff00 ,#ff6e02);
+
+   background: rgb(34,193,195);
+   background: linear-gradient(65deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+*/
+}
+img{
+   min-width: 200px;
+   max-width: 800px;
+
+}
+.container{
+   /* outline:5px solid green;   */
+   height: 100vh;
+   display: grid;
+   gap:10px;
+   grid-template-columns: 5fr 5fr 4fr 4fr 4fr 4fr 5fr 5fr;
+   grid-template-rows: 3fr 10fr 2fr;
+
+
+   grid-template-areas:
+   "header header header header header header header header"
+   "left left centerPanel centerPanel centerPanel centerPanel right right"
+   "footer footer footer footer footer footer footer footer"
+}
+
+.header{
+   grid-area: header;
+   background-image: url(../image/5.jpg);
+   background-size: 500px 300px;
+   background-size: cover;
+   /* background-attachment: fixed ;
+  /*  font-size: 70pt;
+  /* color: white;
+  border:1px double rgb(192, 141, 141);
+       padding: ;*/
+       
+}
+ .header_center{
+   grid-area: header ;
+   text-align: center;
+   background-size: contain;
+   background-image: url(../image/3.jpg);
+   height: 200px;
+   color: aliceblue;
+                border:3px double rgb(114, 202, 249);
+                padding:10px;
+                font-size: 60px;
+               /* padding: 20px 10px;
+                padding: 10px 20px 30px 40px;*/
+   
+ }
+
+ .logo{
+   display: flex;
+   justify-content:space-between;
+   
+ }
+
+.left{
+   grid-area: left;
+   background-image : url(../image/hotdog.jpg);
+ background-size : 150%;
+ font-size : 30px;
+ border:3px double rgb(241, 15, 15);
+}
+/*.centerPanel{
+  
+}*/
+.rightPanel{
+   color: rgb(240, 92, 13);
+   grid-area: right;
+   background-image: url(../image/2.jpg);
+ background-size: 200%;
+ font-size: 20px;
+ border:3px double rgb(14, 13, 13);
+}
+
+.footer{
+   grid-area: footer;
+   background-image: url(../image/1.jpeg);
+ background-size: 699px;
+ background-size: contain;
+ color: antiquewhite;
+ text-align: center;
+ font-size: 50px;
+ border:3px double rgb(15, 15, 15);
+      /* padding:50px;*/
+}
+
+  .nav {
+   background-color: #0a4ba0;
+   background-size: auto;
+    font-size: 28px;
+    text-transform: uppercase;
+    
+  }
+ .nav_link {
+    color: red;
+    text-decoration: none ;
+    transition: color 2s  linear ;
+    display: inline-block;
+    margin: 10px;
+ }
+
+   .nav_link:hover{
+      color: white;
+   }
