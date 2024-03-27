@@ -1,0 +1,40 @@
+<script>
+ let array1 =[1,2,3,4,5,6,7,8,9];
+  
+ let array2 = [];
+
+array1.push(10);
+array2.push("Andrey");
+
+
+array2.shift(450);
+
+array1.pop();
+array2.pop();
+array2.unshift();
+
+console.log(array1,length);
+console.log(array2,length);
+
+
+array2.push("Andrey");
+array2.push("Andrey");
+array2.push("Andrey");
+array2.push("Andrey");
+array2.push("Andrey");
+array2.push("Andrey");
+array2.push("Andrey");
+
+
+//let array3 = array1.concat(array2);
+let array3 =[...array1,...array2];
+let [a,b,c]= array1;
+
+
+
+
+//let array4 = array3.slice(3,-3);
+let array4 = array3.slice(3,3);
+
+console.log(array3);
+</script>

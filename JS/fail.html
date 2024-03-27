@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Forms</title>
+
+    <style>
+        .error{
+            border-color:red;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label>Name:</label><br>
+        <input type="text" name="name" id="">
+        <button>Save</button><br>
+        <label>Options:</label><br>
+        <select name="options" id=""></select><br>
+        <label>Message:</label><br>
+        <textarea name="message" id="" cols="30" rows="10"></textarea><br>
+        <div class="symbolCount"></div>
+
+        <input type="checkbox" name="agree" id=""> <label>Agree:</label><br>
+
+        <div class="error">
+
+        </div>
+        <input type="submit" value="Register" disabled>
+    </form>
+
+
+
+
+    <script>
+        let errorText = `Проверьте форму на ошибки!`
+        const form = document.querySelector("form");
+        const errorDiv = document.querySelector(".error");
+        const symbolCount = document.querySelector(".symbolCount");
+
+
+
+        document.forms[0][1].onclick = function(event){
+            event.preventDefault();
+            if(document.forms[0][0].value.length < 4){
+                errorDiv.innerHTML = errorText;
+                document.forms[0][0].classList.add("error")
+                return false;
+            }
+            let inputText = document.forms[0][0].value;
+            document.forms[0][2].innerHTML+=`
+                <option value="${inputText}">${inputText}</option>`;
+                document.forms[0][0].value = "";
+                errorDiv.innerHTML = "";
+                document.forms[0][0].classList.remove("error");
+        }
+
+        
+        let maxSymbols = 500;
+        symbolCount.innerHTML = `Осталось: ${maxSymbols} символов`
+        document.forms[0][3].oninput = function(){
+            let count = maxSymbols - this.value.length;
+            symbolCount.innerHTML = `Осталось: ${count} символов`
+        }
+        document.forms[0][4].onchange = function(event){
+            if(event.target.checked){
+                document.forms[0][5].removeAttribute("disabled");
+            }else{
+                document.forms[0][5].setAttribute("disabled","");
+            }
+        }
+
+        document.forms[0][5].onclick = function(event){
+            event.preventDefault();
+            let data  =  new FormData(form);
+            data.append("hidden","saveUser");
+            data.delete("name");
+
+            let output;
+
+            for (const [key, value] of data) {
+            output += `${key}: ${value}\n`;
+            }
+
+            console.log(output)
+
+            fetch("https://jsonplaceholder.typicode.com/posts",{
+                method:"POST",
+                body:data,
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                 },
+            }).then(function(answer){
+                
+            })
+
+            }
+
+
+        // console.log(document.forms[0]);
+
+
+
+    </script>
+</body>
+</html>

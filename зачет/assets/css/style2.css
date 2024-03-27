@@ -1,0 +1,205 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+article > * + * {
+  margin-top: 1em;
+}
+
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap')
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+  .logo{
+  display:flex;
+  color: red;
+  justify-content:space-between;
+  border: 2px; 
+  margin: 5px;
+  padding:10px; 
+  transition: color 2s  ease-in-out ;
+  font-family: "Oswald",sans-serif;
+  font-size: 16px;
+  font-style: normal;
+}
+
+.logo:hover{
+  color: white;
+}
+.icofont-truck-alt{
+  background-color: red;
+}
+.nav {
+  background-color: #0a4ba0;
+  background-size: auto;
+   font-size: 28px;   
+ }
+
+.nav_link {
+   color: red;
+   text-decoration: none ;
+   transition: color 2s  ease-in-out ;
+  /* display: inline-block;*/
+   margin: 5px;
+   padding:10px;
+   font-family: "Oswald", sans-serif;
+   font-style: normal;
+}
+
+  .nav_link:hover{
+     color: white;
+  }
+
+  .header{
+    background-attachment: fixed;
+    background-color: #0a4ba0;
+  }
+
+   .content{
+    font-family: "Oswald", sans-serif;          
+    font-style: normal
+    font-weight: 400;
+    line-height: normal;
+    text-transform:capitalize;                  }
+
+    .phone{
+      text-align: right;
+      color: rgb(145, 6, 6);
+      margin-right: 32px;   
+      font-size: 16px;  
+    }
+
+    .mail{
+      text-align: right;
+      color:rgb(145, 6, 6);
+      font-size: 16px;
+      margin-right: 32px; 
+     
+    }
+  .container, .container-fluid  {
+    background: #eceaea;
+   /* background-image: linear-gradient(to bottom, #eee 0%, #eee 100%), linear-gradient(to bottom, #ccc 0%, #ccc 100%);
+    background-clip: border-box, content-box;*/
+    min-height: 100px;  /* only for demo visualization */
+    margin-bottom: 30px;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    
+}
+   
+    .box{
+      text-align: center;
+      margin: 0 15px;
+      background-color: aqua;
+      height: 200px;
+      width: 25%;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px;
+      color: #fff;
+      font-size: 50px;
+    }
+    .header{
+    background-attachment: fixed;
+    background-color: #0a4ba0;
+    
+
+  }
+    section{
+      height: 300px;
+    }
+   
+  section img{
+    float: left;
+  }
+  .right img{
+    float: right;
+  }
+  .left img{
+    float: left;
+  }
+   .center img{
+    float: right;
+    width: 400px;
+   }
+
+   h2{
+    text-align: center;
+    color: red;
+  }
+
+
+  footer{
+    border: 1px solid black;
+    background: rgb(2,0,36);
+    background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(37,240,217,1) 88%, rgba(0,212,255,1) 100%);
+    text-align: center;
+  
+  }
+ 

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        button {
+            padding: 10px;
+        }
+
+        .mobile_menu {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background-color: bisque;
+            width: 100px;
+            transform: translate(-150px, 0px);
+            transition: all 500ms ease-in-out;
+        }
+
+        .mobile_menu a {
+            display: block;
+            transition: all 500ms ease-in-out;
+        }
+
+        .active_menu {
+            transform: translate(0px, 0px);
+            transition: all 500ms ease-in-out;
+        }
+
+
+
+
+
+        /* Dialog */
+
+        dialog{
+            padding: 20px;
+            position: relative;
+            background-color: antiquewhite;
+        }
+
+        dialog .closeDialog{
+            position: absolute;
+            right:20px;
+            top:8px;
+            padding: 3px 5px;
+        }
+
+        ::backdrop{
+            background-color: rgba(0, 0, 0, 0.556);
+
+        }
+       
+   /* Ligthbox */
+   .images{
+    width: 100%;
+   display: flex;
+  /* gap: 20px;*/
+   
+
+   }
+   .images img{
+   width: 100%;
+   display: block;
+   padding: 10px;
+   box-sizing: border-box;
+   }
+
+   .lightbox{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background-color:rgba(255, 255, 255, 0.567);
+    display: none;
+    justify-content: center;
+            align-items: center;
+            flex-direction: column;
+   }
+
+  .lightbox img{
+   max-height: 70%;
+   border: 5px solid white;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 10px;
+  }
+        .lightbox h3{
+            font-size: 30px;
+        }
+        .slider{
+
+width: 900px;
+overflow: hidden;
+margin: auto;
+box-sizing: border-box;
+
+}
+
+.slideWrap{
+display: flex;
+gap: 10px;
+flex-wrap: nowrap;
+width: calc(900px*6);
+position: relative;
+left:-700px;
+}
+.slider .slide{
+box-sizing: border-box;
+width: 900px;
+height: 300px;
+background-color: antiquewhite;
+}
+
+
+
+.sliderButtons{
+display: flex;
+justify-content: space-around;
+margin-top: 10px;
+
+}
+.sliderButtons button{
+padding: 2px 5px;
+}
+ .tabs{
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  gap: 10px;
+
+ }
+.tabs a{
+  display: block;
+  padding: 5px 10px;
+  background-color: indianred;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 16pt;
+  text-decoration: none;
+}
+.tabs-content{
+  width: 400px;
+  border: 2px solid black;
+  padding: 10px 20px;
+}
+
+    </style>
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+
+      // Мобильное меню
+
+      let menuButton = document.querySelector(".menu_button"),
+          menuDiv = document.querySelector(".mobile_menu")
+
+
+      // menuButton.onclick = function(){
+      //     menuDiv.classList.toggle("active_menu")
+      // } 
+
+
+      menuButton.addEventListener("click", function () {
+          menuDiv.classList.toggle("active_menu");
+      })
+
+
+
+      let dialogButton = document.querySelector(".openDialog"),
+          dialog = document.querySelector("dialog"),
+          closeDialogButton = document.querySelector(".closeDialog");
+
+          dialogButton.addEventListener("click", function(){
+              dialog.showModal();
+          })
+
+          closeDialogButton.addEventListener("click", function(){
+              dialog.close();
+          })
+
+
+
+
+          // Lightbox
+
+
+          let images = document.querySelectorAll(".images img"),
+              lightbox = document.querySelector(".lightbox"),
+              lightboxImg = document.querySelector(".lightbox img"),
+              lightboxH3 = document.querySelector(".lightbox h3")
+
+
+
+              for(image of images ){
+                  image.addEventListener("click",function(e){
+                      lightboxImg.src = e.target.src;
+                      lightboxH3.innerText = e.target.alt;
+                      lightbox.style.display = "flex";
+                  })
+              }
+
+              lightbox.addEventListener("click",function(e){
+                  if(e.target==lightbox){
+                      lightbox.style.display = "none";
+                  }
+              })
+
+
+
+
+            let leftButton = document.querySelector(".sliderButtons .left"),  
+               rightButton = document.querySelector(".sliderButtons .right"),
+               slideWrapper = document.querySelector(".slideWrap");
+               
+               let slides = document.querySelectorAll(".slide");
+              //  width: 900px;
+
+              // 762.859
+              //  gap: 10px; 
+              let left = -700;
+
+              rightButton.addEventListener("click",function(){
+                  if(left > -4564.295){
+                  left-=(762.859+10);
+                  console.log(left);
+                  slideWrapper.style.left = left+"px";
+              }
+              })
+
+              leftButton.addEventListener("click",function(){
+                  if(left < -700.0000000000003){
+                  left+=(762.859+10);
+                  console.log(left);
+                  slideWrapper.style.left = left+"px";
+              }
+              })
+
+
+
+              // tabs
+
+
+              let tabButtons = document.querySelectorAll(".tabs a");
+              let tabsDiv = document.querySelectorAll(".tab");
+              function openTab(tabId){
+                  for(tab of tabsDiv){
+                      tab.style.display = "none";
+                  }
+                  document.querySelector("#"+tabId).style.display = "block";
+              }
+              for(tabButton of tabButtons){
+                  tabButton.addEventListener("click", function(event){
+                      event.preventDefault();
+                      let id = event.target.href.substr(-4);
+                      openTab(id);
+                  })
+              }
+              tabButtons[0].click();
+            
+
+
+  })
+
+
+</script>
+</head>
+
+<body>
+    <button class="menu_button">Menu</button> 
+    <button class="openDialog">Open Dialog</button>
+
+    <!-- Мобильное меню -->
+    
+
+    <div class="mobile_menu ">
+        <a href="#">Menu 1</a>
+        <a href="#">Menu 2</a>
+        <a href="#">Menu 3</a>
+        <a href="#">Menu 4</a>
+    </div>
+
+
+    <!-- Мобильное меню -->
+
+    <!-- Диалоговое окно -->
+    <dialog>
+        <button class="closeDialog">x</button>
+
+        <form action="">
+            <div>
+                <label for="">Login:</label><br>
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <label for="">Password:</label><br>
+                <input type="password" name="" id=""><br><br>
+            </div>
+            <div>
+                <input type="submit" value="Login">
+            </div>
+
+        </form>
+    </dialog> 
+
+    <div class="images">
+     <img src="https://st.depositphotos.com/1007930/1486/i/380/depositphotos_14860995-stock-photo-shanghai.jpg" alt="Рига">
+     <img src="https://st4.depositphotos.com/1038117/28707/i/380/depositphotos_287077564-stock-photo-green-space-lujiazui-central-shanghai.jpg" alt="Таллин">
+     <img src="https://st.depositphotos.com/1000128/2546/i/380/depositphotos_25462441-stock-photo-modern-business-buildings.jpg" alt="Вильнюс">
+    
+    </div>
+
+   <div class="lightbox">
+    <img src="" alt="image">
+    <h3>image name</h3>
+
+   </div>
+   <div class="slider">
+    <div class="slideWrap">
+        <div class="slide slide_start">0</div>
+        <div class="slide">1</div>
+        <div class="slide">2</div>
+        <div class="slide">3</div>
+        <div class="slide">4</div>
+        <div class="slide">5</div>
+        <div class="slide">6</div>
+    </div>
+   
+</div>
+<div class="sliderButtons">
+    <button class="left">Left</button>
+    <button class="right">Right</button>
+</div>
+
+<div class="tabs">
+  <a href="#tab1">Tab1</a>
+  <a href="#tab2">Tab2</a>
+  <a href="#tab3">Tab3</a>
+  </div>
+
+<div class="tabs-content">
+<div class="tab" id="tab1">
+  <h2>Tab 1</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi soluta vitae nemo culpa, sunt iste? Dolor sit eaque omnis nemo atque architecto fugiat perferendis cupiditate dolore esse, praesentium iste assumenda.</p>
+</div>
+<div class="tab" id="tab2">
+  <h2>Tab 2</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi soluta vitae nemo culpa, sunt iste? Dolor sit eaque omnis nemo atque architecto fugiat perferendis cupiditate dolore esse, praesentium iste assumenda.</p>
+</div>
+<div class="tab" id="tab3">
+  <h2>Tab 3</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi soluta vitae nemo culpa, sunt iste? Dolor sit eaque omnis nemo atque architecto fugiat perferendis cupiditate dolore esse, praesentium iste assumenda.</p>
+</div>
+</div>
+
+</body>
+
+</html>

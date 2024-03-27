@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   .heading{
+    text-align: center;
+    padding: 20px;
+    background-color: blanchedalmond;
+    border-bottom: 3px solid blue ;
+    cursor: pointer;
+   }
+
+    .border{
+    border: 3px dotted red;
+
+    }
+  </style>
+</head>
+<body>
+  <h1 id="el1">hello java script</h1>
+  <p>paragraph1</p>
+  <p>paragraph2</p>
+  <p>paragraph3</p>
+  <p>paragraph4</p>
+  <p>paragraph5</p>
+
+  <div class="block1">
+
+  </div>
+ <h1>Form</h1>
+ <form action="">
+   <select name="" id=""></select>
+
+ </form>
+
+  <a href="https://ss.com" title="testing atributes">ss.com</a>
+
+
+
+ <h1>gallery</h1>
+ <div class="gallery"></div>
+  <script>
+
+    //console.log(document.body);
+    //console.log(document.title);
+
+    //document.title = "hello JS";
+
+    //document.body.innerHTML ="<h1> hello JS</h1>";
+    //document.body.innerHTML +="<h2>hello JS2</h2>";
+
+   let h1 = document.getElementById("el1");
+   let p= document.getElementsByTagName("p");
+   let div1 = document.getElementsByClassName("block1");
+
+   let div2 = document.querySelector("div.block1"); 
+   let paragraphs = document.querySelector("p");
+   let select = document.querySelector("form select")
+   let galleryDiv = document.querySelector(".gallery");
+   let hyperLink = document.querySelector("a")
+
+   let galleryData = [
+    "https://th.bing.com/th/id/OIP.aiL4lLwwzdZaAmRIdipKKgHaEK?rs=1&pid=ImgDetMain",
+    "https://bipbap.ru/wp-content/uploads/2017/09/51a041d0.jpg",
+    "https://vjoy.cc/wp-content/uploads/2019/07/30-1.jpg",
+    "https://okpolushkino.ru/wp-content/uploads/2019/10/%D0%B7%D0%B0%D0%BA%D0%B0%D1%80%D0%BF%D0%B0%D1%82%D1%8C%D0%B5.jpg",
+   ];
+   h1.innerText ="hello world"
+
+   p[0].innerText = h1.innerText;
+   div1[0].innerText = h1.innerText;
+
+   for ( let i=0;i<paragraphs.lenght;i++){
+    paragraphs[i].innerText =`Paragraphs ${i+1}!`;
+   }
+
+  // console.log(div2,paragraphs);
+  for(let year = 1980;year <= 2024;year++){
+      select.innerHTML +=
+      `<option value="${year}">${year}</option>`;
+  }
+    
+   for(let image of galleryData){
+    galleryDiv.innerHTML +=`
+    <img src="${image}" alt="image" width="100%">
+    `;
+   }
+
+    galleryDiv.style.display ="grid";
+    galleryDiv.style.gridTemplateColums = "auto auto auto ";
+    galleryDiv.style.gap = "10px" 
+
+   div2.innerText = hyperLink.href;
+
+    let haedings = document.querySelectorAll("h1");
+
+    for(h1 of haedings){
+      h1.title = h1.innerText;
+      h1.classList.add("heading");
+      h1.classList.add("border");
+      //h1.classList.toggle("heading");
+h1.onclick = function () {
+  this.classList.toggle("heading");
+  
+}
+    }
+   let img2 = document.createElement("img");
+   img2.src = galleryData[0];
+   img2.alt = "new image";
+   img2.width = 300;
+   document.body.appendChild(img2);
+   document.body.insertBefore(img2,document.querySelector("#el1"));
+
+   galleryDiv.onclick = function()
+  {
+    this.remove();
+  }
+
+  
+  </script>
+
+</body>
+</html>
